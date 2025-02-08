@@ -108,6 +108,8 @@ if not st.session_state["diamantes"].empty:
         center_format = workbook.add_format({"align": "center"})
         currency_format = workbook.add_format({"align": "center", "num_format": "R$ #,##0.00"})
         worksheet.set_column("A:A", 15, center_format)
+        for row_num in range(1, len(st.session_state["diamantes"]) + 1):
+            worksheet.write(row_num, 0, st.session_state["diamantes"].iloc[row_num - 1, 0], center_format)
         worksheet.set_column("B:B", 12, center_format)
         worksheet.set_column("C:C", 12, center_format)
         worksheet.set_column("D:D", 25, center_format)
