@@ -41,7 +41,7 @@ st.markdown("Gerencie e registre o envio de diamantes para clubes de forma profi
 
 # Criar inputs para os dados
 data = st.date_input("**Data**", value=datetime.today())
-horario = st.time_input("**Horário**", value=datetime.now().time())
+horario = st.time_input("**Horário**")
 id_clube = st.text_input("**ID do Clube**", value="")
 nome_clube = st.text_input("**Nome do Clube**", value="")
 quantidade = st.number_input("**Quantidade**", min_value=0, step=1)
