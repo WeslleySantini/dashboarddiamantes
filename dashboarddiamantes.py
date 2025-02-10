@@ -26,6 +26,22 @@ st.markdown("""
 def generate_filename():
     return f"diamantes_clubes_{datetime.today().strftime('%d-%m-%Y')}.xlsx"
 
+import pandas as pd
+import os
+
+file_path = "dados_ressarcimentos.csv"
+
+# Carregar os dados ao iniciar o app
+if "dados" not in st.session_state:
+    if os.path.exists(file_path):
+        st.session_state["dados"] = pd.read_csv(file_path)
+    else:
+        st.session_state["dados"] = pd.DataFrame(columns=["DATA", "ID CLUBE", "NOME DO CLUBE", "VALOR", "RESPONSÁVEL"])
+
+# Salvar dados ao adicionar um novo ressarcimento
+def salvar_dados():
+    st.session_state["dados"].to_csv(file_path, index=False)
+
 # Carregar os dados salvos
 file_path = "dados_diamantes.csv"
 if "diamantes" not in st.session_state:
